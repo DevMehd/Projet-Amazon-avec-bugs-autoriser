@@ -7,7 +7,7 @@ session_start();
 require_once __DIR__ . '/db.php';
 
 // CONFIG
-$router_pages = ['home', 'contact', 'admin'];
+$router_pages = ['home', 'contact', 'admin', 'admin-panel'];
 
 // inclure les utilitaires
 require_once __DIR__ . '/utils/errors.php';
