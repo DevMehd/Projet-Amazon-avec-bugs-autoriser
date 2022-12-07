@@ -7,11 +7,11 @@ session_start();
 require_once __DIR__ . '/db.php';
 
 // CONFIG
-$router_pages = ['home', 'contact', 'admin', 'admin-panel'];
+$router_pages = ['home', 'contact', 'admin', 'admin-panel', 'products', 'login'];
 
-// inclure les utilitaires
+// Inclure les utilitaires
 require_once __DIR__ . '/utils/errors.php';
 
-// inclure tous les fichiers du dossier sql
+// Inclure tous les fichiers du dossier sql
 
-// inclure toutes les classes
+// Inclure toutes les classes

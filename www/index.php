@@ -15,6 +15,8 @@ if (isset($_GET['p'])) {
 }
 
 require __DIR__ . '/../php/views/pages/'.$page.'.php';
+// On arrete d'ecrire dans la memoire tampon et on recupere le contenu precedent
+$pageContent = ob_get_clean();
 require __DIR__ . '/../php/views/partials/header.php';
-// echo $pageContent;
+echo $pageContent;
 require __DIR__ . '/../php/views/partials/footer.php';
