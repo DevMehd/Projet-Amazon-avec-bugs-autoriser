@@ -11,13 +11,16 @@
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <!-- <link href="css/styles.css" rel="stylesheet" />     -->
     <link href="/css/styles.css" rel="stylesheet" />
+    <link href="/css/login.css" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
     <title><?= $pageTitle; ?></title>
 </head>
 
 <body>
-    <!-- Navigation-->
+    <!-- NAVIGATION -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand" href="#!">Shop</a>
@@ -48,7 +51,9 @@
             </div>
         </div>
     </nav>
-    <!-- Header-->
+    <!-- NAVIGATION END -->
+
+    <!-- Header -->
     <header class="bg-dark py-5">
         <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-white">
@@ -57,3 +62,7 @@
             </div>
         </div>
     </header>
+    <!-- HEADER END -->
+
+
+    
