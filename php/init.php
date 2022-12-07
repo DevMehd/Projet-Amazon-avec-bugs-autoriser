@@ -7,7 +7,7 @@ session_start();
 require_once __DIR__ . '/db.php';
 
 // CONFIG
-$router_pages = ['home', 'contact', 'admin', 'admin-panel', 'products', 'login'];
+$router_pages = ['home', 'contact', 'admin', 'admin-panel', 'products', 'login', 'logout'];
 $exclude_pages = ['login'];
 
 // Inclure les utilitaires
