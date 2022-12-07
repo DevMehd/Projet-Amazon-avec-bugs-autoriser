@@ -13,6 +13,19 @@ $exclude_pages = ['login'];
 // Inclure les utilitaires
 require_once __DIR__ . '/utils/errors.php';
 
-// Inclure tous les fichiers du dossier sql
+function getIp(){
+    if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])){
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    }
+    elseif (isset($_SERVER['HTTP_CLIENT_IP'])){
+        $ip  = $_SERVER['HTTP_CLIENT_IP'];
+    }
+    else{
+        $ip = $_SERVER['REMOTE_ADDR'];
+    }
+    return $ip;
+}
+
+// inclure tous les fichiers du dossier sql
 
 // Inclure toutes les classes
