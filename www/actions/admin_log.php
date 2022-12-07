@@ -19,8 +19,8 @@ if (isset($_POST['email']) && isset($_POST['password']) && !empty($_POST['passwo
                 $bytes = openssl_random_pseudo_bytes($bytes, $cstrong);
                 $temp_id   = bin2hex($bytes);
                 setcookie('id_temporaly_admin', $temp_id, time()+60*30, '/');
-                $add_id = $db->prepare('UPDATE admin SET temp_id = ? WHERE admin.email = ?');
-                $add_id->execute([$temp_id, $email]);
+                $add_id = $db->prepare('UPDATE admin SET temp_id = ?, ip = ? WHERE admin.email = ?');
+                $add_id->execute([$temp_id, getIp(), $email]);
                 header('Location: /admin-panel');
                 die();
             }
