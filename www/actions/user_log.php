@@ -26,29 +26,17 @@ if ($_POST['submit']) {
 
                 if ($data[0]['password'] === $logpass_hash) {
                     $_SESSION['userID'] = $data[0]['id'];
-                    $_SESSION['username'] = $data[0]['username'];
+                    $_SESSION['name'] = $data[0]['name'];
                 } else {
-                    echo '<script type="text/javascript">  window.onload = function(){
-                    alert("Mauvais mot de passe !");
-                  }</script>';
-                    header('Location: ./../?p=login');
+                    echo "<script type='text/javascript'>alert('Mauvais mot de passe !');window.location.href='./../?p=login/'</script>";
                 }
             } else {
-                echo '<script type="text/javascript">  window.onload = function(){
-                alert("Mauvais email !");
-              }</script>';
-                header('Location: ./../?p=login');
+                echo "<script type='text/javascript'>alert('Mauvais email !');window.location.href='./../?p=login'</script>";
             }
         } else {
-            echo '<script type="text/javascript">  window.onload = function(){
-            alert("Cet email n\'existe pas !");
-          }</script>';
-            header('Location: ./../?p=login');
+            echo "<script type='text/javascript'>alert('Cet email n\'existe pas !');window.location.href='./../?p=login/'</script>";
         }
     }
-    echo '<script type="text/javascript">  window.onload = function(){
-        alert("Vous avez bien été connecté !");
-      }</script>';
-    header('Location: ./../?p=login');
+    echo "<script type='text/javascript'>alert('Bienvenue {$_SESSION['name']} ! Vous avez bien été connecté !');window.location.href='./../'</script>";
     // echo "<script type='text/javascript'>alert('Bienvenue {$_SESSION['username']}');document.location='/../index.php';</script>";
 }

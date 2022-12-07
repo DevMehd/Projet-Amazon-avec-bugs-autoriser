@@ -1,5 +1,3 @@
-<?php session_start(); ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,7 +39,12 @@
                             <li><a class="dropdown-item" href="#!">Les plus achetés</a></li>
                             <li><a class="dropdown-item" href="#!">Nouveauté</a></li>
                         </ul>
-                    </li>
+                        <?php if (!isset($_SESSION['userID'])) { ?>
+                    <li class="nav-item"><a class="nav-link" href="./?p=login">Se connecter</a></li>
+                <?php } else { ?>
+                    <li class="nav-item"><a class="nav-link" href="./?p=logout">Se deconnecter</a></li>
+                <?php } ?>
+                </li>
                 </ul>
                 <form class="d-flex">
                     <button class="btn btn-outline-dark" type="submit">
@@ -65,6 +68,3 @@
         </div>
     </header>
     <!-- HEADER END -->
-
-
-    
