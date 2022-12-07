@@ -1,4 +1,9 @@
 <?php
+$pageTitle = "Admin panel - Mon site.com";
+
+ob_start();
+?>
+
 if (isset($_COOKIE['id_temporaly_admin']) && !empty($_COOKIE['id_temporaly_admin'])) {
     $id_temp = htmlspecialchars($_COOKIE['id_temporaly_admin']);
     $verify_admin = $db->prepare('SELECT ip FROM admin WHERE temp_id = ?');
@@ -21,5 +26,3 @@ if (isset($_COOKIE['id_temporaly_admin']) && !empty($_COOKIE['id_temporaly_admin
     header('Location: /admin');
     die();
 }
-
-?>
