@@ -8,6 +8,7 @@ require_once __DIR__ . '/db.php';
 
 // CONFIG
 $router_pages = ['home', 'contact', 'admin', 'admin-panel', 'products', 'login'];
+$exclude_pages = ['login'];
 
 // Inclure les utilitaires
 require_once __DIR__ . '/utils/errors.php';

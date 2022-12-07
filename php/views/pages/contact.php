@@ -22,6 +22,3 @@ ob_start();
     <button type="submit">Envoyer</button>
 </form>
 
-<?php
-// On arrete d'ecrire dans la memoire tampon et on recupere le contenu precedent
-$pageContent = ob_get_clean();
