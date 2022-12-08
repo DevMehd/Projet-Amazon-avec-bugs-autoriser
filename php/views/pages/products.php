@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../../init.php";
 $pageTitle = "Nos produits - Mon site.com";
 
 // Commencer a ecrire dans la memoire tampon
