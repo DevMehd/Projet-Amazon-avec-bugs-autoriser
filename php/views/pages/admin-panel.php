@@ -10,7 +10,14 @@ if (isset($_COOKIE['id_temporaly_admin']) && !empty($_COOKIE['id_temporaly_admin
     $verify_admin = $verify_admin->fetch();
     if ($verify_admin) {
         if ($verify_admin['ip'] == getIp()) {
-            # code...
+            
+            $products = $db->prepare('SELECT * FROM porducts');
+            $products->execute();
+            while($p = $products->fetch()){
+                echo $p['title'];
+            }
+
+
         }else{
             setcookie('id_temporaly_admin', '', time(), '/');
             header('Location: /admin');
