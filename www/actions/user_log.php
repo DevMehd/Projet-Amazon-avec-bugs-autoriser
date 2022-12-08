@@ -28,7 +28,7 @@ if ($_POST['submit']) {
                     $_SESSION['userID'] = $data[0]['id'];
                     $_SESSION['name'] = $data[0]['name'];
                 } else {
-                    echo "<script type='text/javascript'>alert('Mauvais mot de passe !');window.location.href='./../?p=login/'</script>";
+                    echo "<script type='text/javascript'>alert('Mauvais mot de passe !');window.location.href='./../?p=login'</script>";
                 }
             } else {
                 echo "<script type='text/javascript'>alert('Mauvais email !');window.location.href='./../?p=login'</script>";
