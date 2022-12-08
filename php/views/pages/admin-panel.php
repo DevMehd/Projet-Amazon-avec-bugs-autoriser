@@ -27,6 +27,7 @@ if (isset($_COOKIE['id_temporaly_admin']) && !empty($_COOKIE['id_temporaly_admin
                 $product_price = htmlspecialchars($p['price']);
                 $product_description = htmlspecialchars($p['description']);
                 $product_date = htmlspecialchars($p['date_added']);
+                $stock = htmlspecialchars($p['stock']);
                 $cat_id = $p['category_id'];
                 $category = ($categories[$cat_id-1]['name']);
                 ?>
@@ -40,11 +41,41 @@ if (isset($_COOKIE['id_temporaly_admin']) && !empty($_COOKIE['id_temporaly_admin
                                 <!-- Product name-->
                                 <h5 class="fw-bolder"><?= $product_name ?></h5>
                                 $<?= $product_price ?>
+                                Stock = <?= $stock ?>
                             </div>
                         </div>
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/admin/edit/product/<?= $p['id'] ?>">Modifier</a></div>
+                            <div class="text-center">
+                                <a class="btn btn-outline-dark mt-auto" href="/admin/edit/product/<?= $p['id'] ?>">Modifier</a>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#delete_<?= $p['id'] ?>">
+                                    Supprimer
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Modal -->
+                <div class="modal fade" id="delete_<?= $p['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Supprimer "<?= $product_name ?>" ?</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                            <form action="actions/delete_product.php" method="post">
+                                <input type="hidden" name="id" value="<?= $p['id'] ?>">
+                                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" id="suppr_<?= $p['id']  ?>">Oui supprimer "<?= $product_name ?>"</button>
+                            </form>
+                        </div>
                         </div>
                     </div>
                 </div>
