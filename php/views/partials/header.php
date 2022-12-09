@@ -34,7 +34,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/products">Tous les produits</a></li>
+                            <li><a class="dropdown-item" href="/allproducts">Tous les produits</a></li>
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
@@ -47,13 +47,23 @@
                     <li class="nav-item"><a class="nav-link" href="/logout">Se deconnecter</a></li>
                 <?php } ?>
                 </li>
+                <li class="nav-item">
+                    <div class="input-group">
+                        <input type="search" id="form1" class="form-control" />
+                        <button type="button" class="btn btn-primary">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </li>
                 </ul>
                 <form class="d-flex">
-                    <button class="btn btn-outline-dark" type="submit">
-                        <i class="bi-cart-fill me-1"></i>
-                        Mon Panier
-                        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                    </button>
+                    <a style="text-decoration: none" href="/cart">
+                        <button class="btn btn-outline-dark" type="submit">
+                            <i class="bi-cart-fill me-1"></i>
+                            Mon Panier
+                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        </button>
+                    </a>
                 </form>
             </div>
         </div>

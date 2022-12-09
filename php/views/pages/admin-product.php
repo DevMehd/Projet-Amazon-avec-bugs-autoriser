@@ -58,6 +58,7 @@ if (isset($_COOKIE['id_temporaly_admin']) && !empty($_COOKIE['id_temporaly_admin
 }
 ?>
 
+<p></p>
 <form action="" method="POST">
     <div class="section text-center">
         <!-- <h4 class="mb-4 pb-3">Se connecter</h4> -->

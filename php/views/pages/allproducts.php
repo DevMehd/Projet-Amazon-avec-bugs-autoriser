@@ -18,22 +18,27 @@ $data_rating = $data_2->fetchAll();
 // print_r($data_rating);
 // echo "</pre>";
 ?>
+<br><br>
+<h1 style="text-align: center">Tous nos produits</h1>
 
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <?php foreach ($data_prod as $products) {
+                // print_r($products['slug']);
                 $sum = 0;
                 $i = 0;
+                $slug = str_replace(' ', '_', $products['title']);
+                // echo $slug;
             ?>
                 <div class="col mb-5">
                     <div class="card h-100">
                         <!-- Sale badge-->
                         <?php if ($products['promo']) { ?>
-                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Promotion</div>
+                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Promotion</div>
                         <?php } ?>
                         <!-- Product image-->
-                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                        <a href="./?p=product&slug=<?php echo $products['slug']; ?>"> <img class="card-img-top" src="https://placedog.net/450/300" alt="..." /> </a>
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
@@ -61,12 +66,12 @@ $data_rating = $data_2->fetchAll();
                                     ?>
                                             <div class="bi-star-fill"></div>
                                         <?php
-                                        $count = $count + 1;
+                                            $count = $count + 1;
                                         } else { ?>
                                             <div class="bi-star"></div>
                                     <?php }
                                     } ?>
-                                    <?php echo " --(".$count." evaluation)";?>
+                                    <?php echo " --(" . $count . " evaluation)"; ?>
                                 </div>
                                 <!-- Product price-->
                                 <?php if ($products['promo']) { ?>
@@ -83,7 +88,11 @@ $data_rating = $data_2->fetchAll();
                         </div>
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ajouter au panier</a></div>
+                            <div class="text-center">
+                                <form action="" method="POST"><button class="btn btn-outline-dark mt-auto" value="<?php echo $product['slug']; ?>">Ajouter au panier</button></form>
+                            </div>
+                            <p></p>
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="./?p=product&slug=<?php echo $products['slug']; ?>">Plus d'information</a></div>
                         </div>
                     </div>
                 </div>
