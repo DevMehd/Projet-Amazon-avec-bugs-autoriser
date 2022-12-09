@@ -21,8 +21,9 @@ if (isset($_COOKIE['id_temporaly_admin']) && !empty($_COOKIE['id_temporaly_admin
                 $update = $db->prepare('UPDATE products SET title = ?, price = ?, description = ? WHERE products.id = ?');
                 $update->execute([$name, $price, $desc, $id]);
                 if (isset($_POST['promo'])) {
-                    $up_promo = $db->prepare('UPDATE products SET  promo = ? WHERE products.id = ?');
-                    $up_promo->execute([$_POST['promo']]);
+                    echo"ok";
+                    $up_promo = $db->prepare('UPDATE products SET promo = ? WHERE products.id = ?');
+                    $up_promo->execute([$_POST['promo'], $id]);
                 }
             }
             if (isset($_GET['product']) && !empty($_GET['product'])) {
@@ -39,8 +40,15 @@ if (isset($_COOKIE['id_temporaly_admin']) && !empty($_COOKIE['id_temporaly_admin
                     $product_price = htmlspecialchars($p['price']);
                     $product_description = htmlspecialchars($p['description']);
                     $product_date = explode(" ", $p['date_added'])[0];
+                    if ($p['promo'] > 0) {
+                        $promo = "visible";
+                        $color = "green";
+                    }else {
+                        
+                        $promo = "hidden";
+                        $color = "red";
+                    }
                 }
-
 
 
             }
@@ -80,11 +88,11 @@ if (isset($_COOKIE['id_temporaly_admin']) && !empty($_COOKIE['id_temporaly_admin
             <!-- <i class="input-icon uil uil-lock-alt"></i> -->
         </div>
         <div class="form-group mt-2">
-            <label for="if_promo" id="label_promo" style="background-color: red;">Promo ?</label>
+            <label for="if_promo" id="label_promo" style="background-color: <?= $color ?>;">Promo ?</label>
             <!-- <div class="input-group-text"> -->
-                <input class="form-check-input form-check mt-0" type="checkbox" id="if_promo" name="if_promo" aria-label="Promo ?" style="visibility: hidden;">
+                <input class="form-check-input form-check mt-0" type="checkbox" id="if_promo" name="if_promo" aria-label="Promo ?" style="visibility: <?= $promo ?>;">
             <!-- </div> -->
-            <input type="text" class="form-style" aria-label="Text input with checkbox" id="promo" style="visibility:hidden;">
+            <input type="text" class="form-style" aria-label="Text input with checkbox" id="promo" name="promo" style="visibility: <?= $promo ?>; background-color: <?= $color ?>;">
         </div>
         <div class="form-group mt-2">
             <input type="date" name="date" class="form-style" id="desc" autocomplete="off" required value="<?= $product_date ?>" disabled>
