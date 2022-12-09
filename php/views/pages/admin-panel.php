@@ -71,9 +71,9 @@ if (isset($_COOKIE['id_temporaly_admin']) && !empty($_COOKIE['id_temporaly_admin
                         <div class="modal-footer">
                             
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                            <form action="actions/delete_product.php" method="post">
+                            <form action="/actions/delete_product.php" method="post">
                                 <input type="hidden" name="id" value="<?= $p['id'] ?>">
-                                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" id="suppr_<?= $p['id']  ?>">Oui supprimer "<?= $product_name ?>"</button>
+                                <button type="submit" class="btn btn-danger" data-bs-dismiss="modal" id="suppr_<?= $p['id']  ?>">Oui supprimer "<?= $product_name ?>"</button>
                             </form>
                         </div>
                         </div>

@@ -20,6 +20,10 @@ if (isset($_COOKIE['id_temporaly_admin']) && !empty($_COOKIE['id_temporaly_admin
                 $price = htmlspecialchars($_POST['price']);
                 $update = $db->prepare('UPDATE products SET title = ?, price = ?, description = ? WHERE products.id = ?');
                 $update->execute([$name, $price, $desc, $id]);
+                if (isset($_POST['promo'])) {
+                    $up_promo = $db->prepare('UPDATE products SET  promo = ? WHERE products.id = ?');
+                    $up_promo->execute([$_POST['promo']]);
+                }
             }
             if (isset($_GET['product']) && !empty($_GET['product'])) {
                 $id_product = htmlspecialchars($_GET['product']);
@@ -71,7 +75,15 @@ if (isset($_COOKIE['id_temporaly_admin']) && !empty($_COOKIE['id_temporaly_admin
         </div>
         <div class="form-group mt-2">
             <input type="number" name="price" class="form-style" id="desc" autocomplete="off" required value="<?= $product_price ?>">
+            
             <!-- <i class="input-icon uil uil-lock-alt"></i> -->
+        </div>
+        <div class="form-group mt-2">
+            <label for="if_promo" id="label_promo" style="background-color: red;">Promo ?</label>
+            <!-- <div class="input-group-text"> -->
+                <input class="form-check-input form-check mt-0" type="checkbox" id="if_promo" name="if_promo" aria-label="Promo ?" style="visibility: hidden;">
+            <!-- </div> -->
+            <input type="text" class="form-style" aria-label="Text input with checkbox" id="promo" style="visibility:hidden;">
         </div>
         <div class="form-group mt-2">
             <input type="date" name="date" class="form-style" id="desc" autocomplete="off" required value="<?= $product_date ?>" disabled>
@@ -79,8 +91,24 @@ if (isset($_COOKIE['id_temporaly_admin']) && !empty($_COOKIE['id_temporaly_admin
         </div>
         <input type="hidden" name="id" id="id" value="<?= $_GET['product'] ?>">
         <!-- <a href="actions/user_log.php" class="btn mt-4">Se connecter</a> -->
-        <button type="submit" name="submit" value="submit" class="btn mt-4">Submit</a>
+        <button type="submit" name="submit" value="submit" class="btn mt-4">Submit</button>
+        <a class="btn btn-info" href="/admin/panel">Retour aux produits</a>
         <!-- <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p> -->
         <!-- Button trigger modal -->
     </div>
 </form>
+
+<script>
+    if_promo = document.getElementById("if_promo")
+    if_promo.addEventListener("change", function() {
+        console.log(this)
+        if (this.checked) {
+            document.getElementById("promo").style.visibility = 'visible'
+            document.getElementById("promo").style.backgroundColor = 'green'
+            document.getElementById("label_promo").style.backgroundColor = 'green'
+        } else {
+            document.getElementById("promo").style.visibility = 'hidden'
+            document.getElementById("label_promo").style.backgroundColor = 'red'
+        }
+    })
+</script>
